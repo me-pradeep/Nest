@@ -43,8 +43,7 @@ class RepositoryNode(strawberry.relay.Node):
 
     @strawberry.field
     def issues(self) -> list[IssueNode]:
-        """Resolve recent issues."""
-        # TODO(arkid15r): rename this to recent_issues.
+        """Resolve recent issues for the repository."""
         return self.issues.select_related("author").order_by("-created_at")[:RECENT_ISSUES_LIMIT]
 
     @strawberry.field
